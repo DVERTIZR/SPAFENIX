@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard de Staff | CASA FÉNIX</title>
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body class="dashboard-body">
+
+  <!-- PANTALLA DE LOGIN SI NO HAY SESIÓN ACTIVA -->
+  <div class="auth-gate-wrapper" id="authGate">
+    <div class="auth-card">
+      <div class="auth-card-header">
+        <i class="fa-solid fa-feather-pointed brand-icon"></i>
+        <h2>CASA FÉNIX</h2>
+        <span class="auth-subtitle">Portal Administrativo Staff</span>
+      </div>
+
+      <div class="demo-credentials-badge">
+        <strong>Credenciales Demo:</strong><br />
+        Usuario: <code>admin@casafenix.mx</code> &bull; Clave: <code>fenix2026</code>
+      </div>
+
+      <form id="staffLoginForm">
+        <div class="form-group">
+          <label>Correo Electrónico</label>
+          <input type="email" id="loginEmail" required value="admin@casafenix.mx" />
+        </div>
+        <div class="form-group">
+          <label>Contraseña</label>
+          <input type="password" id="loginPassword" required value="fenix2026" />
+        </div>
+        <button type="submit" class="btn-submit-booking">
+          Iniciar Sesión <i class="fa-solid fa-arrow-right-to-bracket"></i>
+        </button>
+        <a href="index.html" class="back-to-site-link"><i class="fa-solid fa-arrow-left"></i> Volver a la web pública</a>
+      </form>
+    </div>
+  </div>
+
+  <!-- INTERFAZ COMPLETA DEL DASHBOARD (VISIBLE SOLO TRAS LOGIN) -->
+  <div class="dashboard-app-wrapper" id="dashboardApp" style="display: none;">
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar">
+      <div class="sidebar-brand">
+        <i class="fa-solid fa-feather-pointed" style="color: var(--gold);"></i>
+        <div>
+          <h3>CASA FÉNIX</h3>
+          <span>Panel de Staff</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="#seccion-kpis" class="active"><i class="fa-solid fa-chart-pie"></i> Estadísticas</a>
+        <a href="#seccion-cintilla"><i class="fa-solid fa-bullhorn"></i> Cintilla Especial</a>
+        <a href="#seccion-tratamientos"><i class="fa-solid fa-spa"></i> Tratamientos (CRUD)</a>
+        <a href="index.html" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Web Pública</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="staff-profile">
+          <div class="avatar"><i class="fa-solid fa-user-shield"></i></div>
+          <div class="staff-info">
+            <span class="staff-name">Administrador</span>
+            <span class="staff-role">Staff Clínico VIP</span>
+          </div>
+        </div>
+        <button class="btn-logout" id="logoutBtn" title="Cerrar Sesión">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="dash-main-content">
+      <!-- Barra Superior del Panel -->
+      <header class="dash-topbar">
+        <div class="dash-welcome">
+          <h2>Panel de Control &amp; Rendimiento</h2>
+          <p>Supervisa métricas de venta, citas en cabina y gestiona el catálogo comercial en vivo.</p>
+        </div>
+        <div class="dash-quick-actions">
+          <a href="index.html" class="btn btn-secondary-sm"><i class="fa-solid fa-eye"></i> Vista Paciente</a>
+          <button class="btn btn-gold-sm" id="openCreateServiceModalBtn">
+            <i class="fa-solid fa-plus"></i> Nuevo Tratamiento
+          </button>
+        </div>
+      </header>
+
+      <!-- 1. KPIS Y ESTADÍSTICAS -->
+      <section class="dash-section" id="seccion-kpis">
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-icon"><i class="fa-solid fa-wallet"></i></div>
+            <div class="kpi-content">
+              <span class="kpi-label">Ingresos Estimados (Mes)</span>
+              <h3 class="kpi-val">$514,200 MXN</h3>
+              <span class="kpi-badge positive"><i class="fa-solid fa-arrow-trend-up"></i> +21.4% vs mes anterior</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon"><i class="fa-solid fa-calendar-check"></i></div>
+            <div class="kpi-content">
+              <span class="kpi-label">Citas en Agenda</span>
+              <h3 class="kpi-val">142 Citas</h3>
+              <span class="kpi-badge neutral">92% Ocupación en Cabinas</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+            <div class="kpi-content">
+              <span class="kpi-label">Spa Parties Confirmadas</span>
+              <h3 class="kpi-val">16 Eventos</h3>
+              <span class="kpi-badge positive">10 Bridal &bull; 6 Cumpleaños</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <div class="kpi-content">
+              <span class="kpi-label">Tratamientos Habilitados</span>
+              <h3 class="kpi-val" id="activeServicesCount">0 Servicios</h3>
+              <span class="kpi-badge neutral" id="totalServicesCount">0 en catálogo</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. CONTROL DE LA CINTILLA PROMOCIONAL SUPERIOR -->
+      <section class="dash-section" id="seccion-cintilla">
+        <div class="admin-box-card">
+          <div class="box-card-header">
+            <div>
+              <h4><i class="fa-solid fa-bullhorn" style="color: var(--gold);"></i> Control de la Cintilla del Mes</h4>
+              <p>Edita el banner superior de la página principal. Los cambios se guardan y reflejan al instante.</p>
+            </div>
+            <div class="toggle-switch-wrap">
+              <label class="switch">
+                <input type="checkbox" id="announcementToggle" checked />
+                <span class="slider round"></span>
+              </label>
+              <span class="switch-text" id="announcementStatusText">Cintilla Activa</span>
+            </div>
+          </div>
+
+          <div class="announcement-form-grid">
+            <div class="form-group">
+              <label>Texto Promocional (Acepta HTML como negritas e íconos)</label>
+              <input type="text" id="announcementInputText" />
+            </div>
+            <button class="btn btn-burgundy-sm" id="saveAnnouncementBtn">
+              <i class="fa-solid fa-floppy-disk"></i> Guardar Cintilla
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. TABLA CRUD DE TRATAMIENTOS -->
+      <section class="dash-section" id="seccion-tratamientos">
+        <div class="admin-box-card">
+          <div class="box-card-header">
+            <div>
+              <h4><i class="fa-solid fa-spa" style="color: var(--gold);"></i> Catálogo de Protocolos &amp; Tratamientos</h4>
+              <p>Habilita, deshabilita, edita o elimina tratamientos en vivo.</p>
+            </div>
+            <button class="btn btn-gold-sm" id="btnAddNewProtocol">
+              <i class="fa-solid fa-plus"></i> Agregar Protocolo
+            </button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Tratamiento</th>
+                  <th>Categoría</th>
+                  <th>Sesiones</th>
+                  <th>Precio Especial</th>
+                  <th>Estado</th>
+                  <th style="text-align: right;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="adminServicesTableBody">
+                <!-- Inyectado dinámicamente por dashboard.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- MODAL: CREAR / EDITAR TRATAMIENTO -->
+  <div class="modal-overlay" id="serviceModal">
+    <div class="modal-box service-modal-box">
+      <div class="modal-header">
+        <h4 id="serviceModalTitle">Agregar Tratamiento</h4>
+        <button class="btn-close-modal" id="closeServiceModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="serviceForm">
+          <input type="hidden" id="serviceId" />
+          <div class="form-row-dual">
+            <div class="form-group">
+              <label>Nombre Principal</label>
+              <input type="text" id="serviceNameInput" required placeholder="Ej. Transforma" />
+            </div>
+            <div class="form-group">
+              <label>Subtítulo / Efecto Cursivo</label>
+              <input type="text" id="serviceSubtitleInput" required placeholder="Ej. Todo tu Cuerpo" />
+            </div>
+          </div>
+
+          <div class="form-row-dual">
+            <div class="form-group">
+              <label>Categoría</label>
+              <select id="serviceCategoryInput">
+                <option value="corporal">Corporal &amp; Moldeo</option>
+                <option value="facial">Facial &amp; Antiedad</option>
+                <option value="laser">Depilación Láser</option>
+                <option value="spa-party">Spa Party &amp; Grupos</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Etiqueta de Sesiones</label>
+              <input type="text" id="serviceSessionsInput" required placeholder="Ej. 16 Sesiones" />
+            </div>
+          </div>
+
+          <div class="form-row-dual">
+            <div class="form-group">
+              <label>Precio Regular / Nota</label>
+              <input type="text" id="serviceRegularPriceInput" placeholder="Ej. $19,500 o 12 MSI" />
+            </div>
+            <div class="form-group">
+              <label>Precio Especial</label>
+              <input type="text" id="serviceSpecialPriceInput" required placeholder="Ej. $14,999" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>URL de Imagen</label>
+            <input type="url" id="serviceImageInput" required placeholder="https://images.unsplash.com/..." />
+          </div>
+
+          <div class="form-group">
+            <label>Descripción Breve</label>
+            <textarea id="serviceDescInput" rows="2" style="width: 100%; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.6rem; font-family: var(--font-sans);"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Beneficios Técnicos (Separados por coma)</label>
+            <input type="text" id="serviceSpecsInput" placeholder="Radiofrecuencia, Cavitación, Drenaje linfático" />
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="serviceActiveCheckbox" checked />
+              Habilitado y visible en la página principal
+            </label>
+          </div>
+
+          <button type="submit" class="btn-submit-booking">
+            Guardar Protocolo <i class="fa-solid fa-check"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script del Dashboard -->
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
