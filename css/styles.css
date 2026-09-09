@@ -513,26 +513,29 @@ header {
   line-height: 1.5;
 }
 
+/* ========================================================
+   ESTILIZACIÓN DE ALTA GAMA: COTIZADOR SPA PARTY
+======================================================== */
 .party-calculator-card {
   background: #FFFFFF;
-  color: var(--text-main);
-  border-radius: var(--radius-lg);
-  padding: 2.4rem;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-  border-top: 4px solid var(--gold);
+  border-radius: 20px;
+  padding: 2.2rem 2rem;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(185, 141, 88, 0.35);
+  position: relative;
 }
 
 .party-calculator-card h3 {
   font-family: var(--font-serif);
   color: var(--burgundy);
-  font-size: 1.6rem;
-  margin-bottom: 0.3rem;
+  font-size: 1.55rem;
+  margin-bottom: 0.25rem;
 }
 
 .party-calculator-card p {
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.4rem;
 }
 
 .calc-group {
@@ -549,6 +552,47 @@ header {
   margin-bottom: 6px;
 }
 
+/* SELECT ESTILIZADO CON FLECHA DORADA */
+.calc-group select#partyPackage {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: var(--bg-crema);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23B98D58' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.85rem 2.4rem 0.85rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--burgundy);
+  cursor: pointer;
+  outline: none;
+  transition: var(--transition);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.calc-group select#partyPackage:hover {
+  border-color: var(--gold);
+}
+
+.calc-group select#partyPackage:focus {
+  border-color: var(--burgundy);
+  box-shadow: 0 0 0 3px rgba(74, 14, 23, 0.1);
+  background-color: #FFFFFF;
+}
+
+.calc-group select#partyPackage option {
+  background: #FFFFFF;
+  color: var(--text-main);
+  padding: 10px;
+  font-weight: 500;
+}
+
 .badge-number {
   background: var(--burgundy);
   color: #FFF;
@@ -558,51 +602,100 @@ header {
   font-weight: 700;
 }
 
-input[type="range"] {
+/* SLIDER DE RANGO ESTILIZADO */
+.calc-group input[type="range"]#partyGuestsRange {
   width: 100%;
-  accent-color: var(--burgundy);
+  height: 6px;
+  background: #EADFD7;
+  border-radius: 10px;
+  outline: none;
+  margin: 14px 0 6px;
+  -webkit-appearance: none;
+  appearance: none;
   cursor: pointer;
 }
 
+.calc-group input[type="range"]#partyGuestsRange::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--burgundy);
+  border: 2px solid var(--gold);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(74, 14, 23, 0.3);
+  transition: transform 0.15s ease;
+}
+
+.calc-group input[type="range"]#partyGuestsRange::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.calc-group input[type="range"]#partyGuestsRange::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--burgundy);
+  border: 2px solid var(--gold);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(74, 14, 23, 0.3);
+}
+
+/* CASILLAS TIPO TARJETA TÁCTIL */
 .checkbox-label {
   display: flex !important;
   align-items: center;
-  gap: 9px;
-  font-size: 0.82rem !important;
-  font-weight: 500 !important;
-  color: var(--text-muted) !important;
+  gap: 12px;
+  background: var(--bg-crema);
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
   margin-top: 8px;
   cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  color: var(--text-main) !important;
 }
 
-.checkbox-label input {
+.checkbox-label:hover {
+  border-color: var(--gold);
+  background: #FFF;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
   accent-color: var(--burgundy);
-  width: 16px;
-  height: 16px;
+  cursor: pointer;
+  margin: 0;
 }
 
 .party-price-box {
-  background: var(--bg-crema);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 1.2rem;
+  background: #FAF5F0;
+  border: 1px dashed var(--gold);
+  border-radius: 14px;
+  padding: 1.1rem;
   text-align: center;
-  margin: 1.5rem 0;
+  margin: 1.5rem 0 1rem;
 }
 
-.total-label {
-  font-size: 0.75rem;
+.party-price-box .total-label {
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--text-muted);
-  letter-spacing: 1px;
+  font-weight: 700;
+  color: var(--gold-hover);
 }
 
-.total-amount {
+.party-price-box .total-amount {
   font-family: var(--font-serif);
-  font-size: 2.2rem;
+  font-size: 2.1rem;
   font-weight: 700;
   color: var(--burgundy);
-  line-height: 1.2;
+  line-height: 1.15;
+  margin: 4px 0;
 }
 
 .sub-label {
@@ -616,24 +709,25 @@ input[type="range"] {
   background: #25D366;
   color: #FFF;
   border: none;
-  padding: 0.9rem;
+  padding: 0.95rem;
   border-radius: 50px;
   font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+  gap: 9px;
+  box-shadow: 0 5px 18px rgba(37, 211, 102, 0.35);
+  transition: var(--transition);
 }
 
 .btn-party-reserve:hover {
   background: #1eb857;
   transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45);
 }
 
 /* SECCIÓN CATÁLOGO */
@@ -860,7 +954,7 @@ input[type="range"] {
   color: #FFF;
 }
 
-/* SUCURSALES & FAQ */
+/* SUCURSALES */
 .locations-section {
   background: #FFF;
   border-top: 1px solid var(--border-color);
@@ -927,6 +1021,181 @@ input[type="range"] {
   gap: 5px;
 }
 
+/* ========================================================
+   MÓDULO DE RESEÑAS DE GOOGLE MAPS (SUCURSALES)
+======================================================== */
+.reviews-wrapper {
+  max-width: 1380px;
+  margin: 4.5rem auto 0;
+  padding-top: 3.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.reviews-header-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.rating-overview {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.rating-score {
+  font-family: var(--font-serif);
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--burgundy);
+  line-height: 1;
+}
+
+.rating-stars {
+  color: #FBBC04;
+  font-size: 1.2rem;
+  display: flex;
+  gap: 3px;
+}
+
+.rating-source {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-left: 2px solid var(--border-color);
+  padding-left: 15px;
+}
+
+.btn-google-review {
+  background: #FFF;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1.6rem;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+  transition: var(--transition);
+}
+
+.btn-google-review i {
+  color: #4285F4;
+  font-size: 1rem;
+}
+
+.btn-google-review:hover {
+  background: var(--burgundy);
+  color: #FFF;
+  border-color: var(--burgundy);
+  transform: translateY(-2px);
+}
+
+.btn-google-review:hover i {
+  color: #FFF;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
+}
+
+.review-card {
+  background: #FFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.8rem;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--gold);
+}
+
+.review-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.1rem;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--gold-subtle);
+  color: var(--burgundy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.review-author h6 {
+  font-size: 0.92rem;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.review-branch {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+.card-stars {
+  color: #FBBC04;
+  font-size: 0.82rem;
+  display: flex;
+  gap: 2px;
+}
+
+.review-text {
+  font-size: 0.88rem;
+  color: var(--text-main);
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: 1.4rem;
+  flex-grow: 1;
+}
+
+.review-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--bg-crema);
+  padding: 4px 10px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+/* FAQ ACCORDION */
 .faq-section {
   max-width: 900px;
   margin: 0 auto;
@@ -1208,177 +1477,4 @@ footer {
   .top-links a {
     margin: 0 8px;
   }
-}
-/* ========================================================
-   MÓDULO DE RESEÑAS DE GOOGLE MAPS (SUCURSALES)
-======================================================== */
-.reviews-wrapper {
-  max-width: 1380px;
-  margin: 4.5rem auto 0;
-  padding-top: 3.5rem;
-  border-top: 1px solid var(--border-color);
-}
-
-.reviews-header-block {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2.5rem;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-.rating-overview {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.rating-score {
-  font-family: var(--font-serif);
-  font-size: 3.2rem;
-  font-weight: 700;
-  color: var(--burgundy);
-  line-height: 1;
-}
-
-.rating-stars {
-  color: #FBBC04;
-  font-size: 1.2rem;
-  display: flex;
-  gap: 3px;
-}
-
-.rating-source {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border-left: 2px solid var(--border-color);
-  padding-left: 15px;
-}
-
-.btn-google-review {
-  background: #FFF;
-  color: var(--text-main);
-  border: 1px solid var(--border-color);
-  padding: 0.75rem 1.6rem;
-  border-radius: 50px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-  transition: var(--transition);
-}
-
-.btn-google-review i {
-  color: #4285F4;
-  font-size: 1rem;
-}
-
-.btn-google-review:hover {
-  background: var(--burgundy);
-  color: #FFF;
-  border-color: var(--burgundy);
-  transform: translateY(-2px);
-}
-
-.btn-google-review:hover i {
-  color: #FFF;
-}
-
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.8rem;
-}
-
-.review-card {
-  background: #FFF;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 1.8rem;
-  box-shadow: var(--shadow-soft);
-  display: flex;
-  flex-direction: column;
-  transition: var(--transition);
-}
-
-.review-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--gold);
-}
-
-.review-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1.1rem;
-}
-
-.review-author {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.review-avatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: var(--gold-subtle);
-  color: var(--burgundy);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.85rem;
-}
-
-.review-author h6 {
-  font-size: 0.92rem;
-  color: var(--text-main);
-  margin-bottom: 2px;
-}
-
-.review-branch {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  display: block;
-}
-
-.card-stars {
-  color: #FBBC04;
-  font-size: 0.82rem;
-  display: flex;
-  gap: 2px;
-}
-
-.review-text {
-  font-size: 0.88rem;
-  color: var(--text-main);
-  line-height: 1.6;
-  font-style: italic;
-  margin-bottom: 1.4rem;
-  flex-grow: 1;
-}
-
-.review-badge {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--gold);
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: var(--bg-crema);
-  padding: 4px 10px;
-  border-radius: 20px;
-  width: fit-content;
 }
