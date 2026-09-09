@@ -13,868 +13,12 @@
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-  <style>
-    :root {
-      --burgundy: #4A0E17;
-      --burgundy-dark: #2B060C;
-      --burgundy-light: #6E1A27;
-      --gold: #B98D58;
-      --gold-hover: #9E743F;
-      --gold-subtle: rgba(185, 141, 88, 0.12);
-      --bg-crema: #FBF8F5;
-      --bg-surface: #FFFFFF;
-      --text-main: #241A18;
-      --text-muted: #6E6360;
-      --border-color: #E8DFD6;
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 24px;
-      --shadow-soft: 0 10px 30px rgba(74, 14, 23, 0.06);
-      --shadow-hover: 0 18px 40px rgba(74, 14, 23, 0.12);
-      --font-serif: 'Playfair Display', serif;
-      --font-cursive: 'Cormorant Garamond', serif;
-      --font-sans: 'Montserrat', sans-serif;
-      --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body {
-      font-family: var(--font-sans);
-      background-color: var(--bg-crema);
-      color: var(--text-main);
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-
-    /* TOP ANNOUNCEMENT BAR */
-    .top-bar {
-      background-color: var(--burgundy-dark);
-      color: #FFF;
-      font-size: 0.76rem;
-      padding: 7px 20px;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(185, 141, 88, 0.3);
-    }
-    .top-bar span strong {
-      color: var(--gold);
-    }
-    .top-links a {
-      color: #E2D7CC;
-      text-decoration: none;
-      margin-left: 18px;
-      transition: var(--transition);
-    }
-    .top-links a:hover {
-      color: var(--gold);
-    }
-
-    /* HEADER & MAIN NAVIGATION */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(251, 248, 245, 0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-color);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-    }
-
-    .main-nav {
-      max-width: 1380px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.9rem 2rem;
-      position: relative;
-    }
-
-    .brand-box {
-      text-decoration: none;
-      text-align: center;
-    }
-    .brand-box .brand-name {
-      font-family: var(--font-serif);
-      color: var(--burgundy);
-      font-size: 1.55rem;
-      letter-spacing: 3.5px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
-    .brand-box .brand-tagline {
-      font-family: var(--font-cursive);
-      color: var(--gold);
-      font-size: 0.95rem;
-      letter-spacing: 2px;
-      font-style: italic;
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 2.2rem;
-    }
-    .nav-links li a {
-      text-decoration: none;
-      color: var(--text-main);
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      padding: 10px 0;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      transition: var(--transition);
-    }
-    .nav-links li a:hover {
-      color: var(--burgundy);
-    }
-
-    /* Actions nav */
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-    }
-    .btn-search {
-      background: none;
-      border: none;
-      color: var(--text-main);
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    .btn-search:hover {
-      color: var(--gold);
-    }
-    .btn-reserve {
-      background-color: var(--burgundy);
-      color: #FFF;
-      text-decoration: none;
-      padding: 0.75rem 1.6rem;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      box-shadow: 0 4px 15px rgba(74, 14, 23, 0.25);
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .btn-reserve:hover {
-      background-color: var(--burgundy-light);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(74, 14, 23, 0.35);
-    }
-
-    /* SEARCH DRAWER */
-    .search-bar-container {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background: var(--bg-surface);
-      padding: 1.2rem 2rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      border-bottom: 1px solid var(--border-color);
-    }
-    .search-bar-container.open {
-      display: block;
-    }
-    .search-inner {
-      max-width: 700px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--bg-crema);
-      border: 1px solid var(--border-color);
-      border-radius: 50px;
-      padding: 0.5rem 1.2rem;
-    }
-    .search-inner input {
-      width: 100%;
-      border: none;
-      background: transparent;
-      outline: none;
-      font-family: var(--font-sans);
-      font-size: 0.9rem;
-    }
-
-    /* HERO SECTION ROBUSTO */
-    .hero {
-      position: relative;
-      background: radial-gradient(circle at 75% 30%, rgba(185, 141, 88, 0.18) 0%, rgba(251, 248, 245, 0.6) 70%), url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
-      min-height: 84vh;
-      display: flex;
-      align-items: center;
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(251, 248, 245, 0.95) 0%, rgba(251, 248, 245, 0.85) 50%, rgba(251, 248, 245, 0.25) 100%);
-    }
-    .hero-container {
-      position: relative;
-      z-index: 1;
-      max-width: 1380px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 3.5rem;
-      align-items: center;
-    }
-    .hero-pretitle {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      color: var(--burgundy);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      background: rgba(74, 14, 23, 0.07);
-      padding: 0.35rem 1rem;
-      border-radius: 50px;
-      margin-bottom: 1.5rem;
-    }
-    .hero-title {
-      font-family: var(--font-serif);
-      font-size: 3.8rem;
-      line-height: 1.1;
-      color: var(--burgundy);
-      margin-bottom: 1.4rem;
-    }
-    .hero-title em {
-      font-family: var(--font-cursive);
-      color: var(--gold);
-      display: block;
-      font-size: 4.3rem;
-      font-weight: normal;
-    }
-    .hero-lead {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      max-width: 540px;
-      margin-bottom: 2.2rem;
-    }
-    .hero-badges {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 2.5rem;
-    }
-    .badge-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.82rem;
-      color: var(--text-main);
-      font-weight: 600;
-    }
-    .badge-item i {
-      color: var(--gold);
-    }
-
-    /* QUICK RESERVATION BAR (ESTILO HELA HOME) */
-    .quick-booking-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(15px);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 2.2rem;
-      box-shadow: var(--shadow-hover);
-      position: relative;
-    }
-    .quick-booking-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 15%;
-      right: 15%;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
-    .quick-title {
-      font-family: var(--font-serif);
-      color: var(--burgundy);
-      font-size: 1.45rem;
-      margin-bottom: 0.3rem;
-    }
-    .quick-subtitle {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-bottom: 1.6rem;
-    }
-    .form-group {
-      margin-bottom: 1.1rem;
-    }
-    .form-group label {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 5px;
-    }
-    .form-group select, .form-group input {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      background: var(--bg-crema);
-      font-family: var(--font-sans);
-      font-size: 0.88rem;
-      color: var(--text-main);
-      outline: none;
-      transition: var(--transition);
-    }
-    .form-group select:focus, .form-group input:focus {
-      border-color: var(--burgundy);
-      background: #FFF;
-    }
-    .btn-submit-booking {
-      width: 100%;
-      background: var(--burgundy);
-      color: #FFF;
-      border: none;
-      padding: 0.9rem;
-      border-radius: 50px;
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: var(--transition);
-      margin-top: 0.5rem;
-    }
-    .btn-submit-booking:hover {
-      background: var(--burgundy-light);
-    }
-
-    /* SECCIÓN DE EXPERIENCIAS / CATEGORÍAS */
-    .section-wrap {
-      max-width: 1380px;
-      margin: 0 auto;
-      padding: 5.5rem 2rem;
-    }
-    .center-heading {
-      text-align: center;
-      max-width: 720px;
-      margin: 0 auto 3.5rem;
-    }
-    .center-heading .label {
-      color: var(--gold);
-      font-size: 0.8rem;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      font-weight: 700;
-      display: block;
-      margin-bottom: 0.4rem;
-    }
-    .center-heading h2 {
-      font-family: var(--font-serif);
-      font-size: 2.5rem;
-      color: var(--burgundy);
-      margin-bottom: 0.8rem;
-    }
-    .center-heading p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    /* FILTROS DE CATÁLOGO */
-    .filter-pills {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 3.5rem;
-      flex-wrap: wrap;
-    }
-    .filter-btn {
-      background: #FFF;
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      padding: 0.6rem 1.4rem;
-      border-radius: 50px;
-      font-family: var(--font-sans);
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--burgundy);
-      color: #FFF;
-      border-color: var(--burgundy);
-    }
-
-    /* GRID DE TRATAMIENTOS ROBUSTA */
-    .treatments-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-
-    .card-item {
-      background: #FFF;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      box-shadow: var(--shadow-soft);
-      transition: var(--transition);
-      position: relative;
-    }
-    .card-item:hover {
-      transform: translateY(-7px);
-      box-shadow: var(--shadow-hover);
-      border-color: rgba(185, 141, 88, 0.4);
-    }
-    .card-image-wrap {
-      height: 200px;
-      overflow: hidden;
-      position: relative;
-    }
-    .card-image-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-    .card-item:hover .card-image-wrap img {
-      transform: scale(1.05);
-    }
-    .card-ribbon {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      background: var(--burgundy);
-      color: #FFF;
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .card-content {
-      padding: 1.8rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-    .card-category {
-      font-size: 0.72rem;
-      color: var(--gold);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 0.3rem;
-    }
-    .card-title {
-      font-family: var(--font-serif);
-      font-size: 1.45rem;
-      color: var(--burgundy);
-      margin-bottom: 0.5rem;
-    }
-    .card-subtitle {
-      font-family: var(--font-cursive);
-      font-size: 1.3rem;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-    .card-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 1.4rem;
-      flex-grow: 1;
-    }
-    .card-specs {
-      list-style: none;
-      margin-bottom: 1.5rem;
-      padding-top: 1rem;
-      border-top: 1px dashed var(--border-color);
-    }
-    .card-specs li {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 0.4rem;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-    .card-specs li i {
-      color: var(--gold);
-      font-size: 0.75rem;
-    }
-    .card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border-color);
-    }
-    .price-block .regular {
-      font-size: 0.75rem;
-      color: #999;
-      text-decoration: line-through;
-      display: block;
-    }
-    .price-block .current {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--burgundy);
-    }
-    .btn-select-service {
-      background: var(--bg-crema);
-      color: var(--burgundy);
-      border: 1px solid var(--burgundy);
-      padding: 0.55rem 1.1rem;
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: var(--transition);
-      text-decoration: none;
-    }
-    .btn-select-service:hover {
-      background: var(--burgundy);
-      color: #FFF;
-    }
-
-    /* MODAL DE RESERVACIÓN EN TIEMPO REAL */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(43, 6, 12, 0.7);
-      backdrop-filter: blur(5px);
-      z-index: 2000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-    }
-    .modal-overlay.active {
-      display: flex;
-    }
-    .modal-box {
-      background: #FFF;
-      width: 100%;
-      max-width: 600px;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
-      animation: modalFade 0.3s ease;
-    }
-    @keyframes modalFade {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .modal-header {
-      background: var(--burgundy);
-      color: #FFF;
-      padding: 1.4rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .modal-header h4 {
-      font-family: var(--font-serif);
-      font-size: 1.3rem;
-      letter-spacing: 1px;
-    }
-    .btn-close-modal {
-      background: none;
-      border: none;
-      color: #FFF;
-      font-size: 1.3rem;
-      cursor: pointer;
-    }
-    .modal-body {
-      padding: 2rem;
-    }
-    .booking-summary {
-      background: var(--bg-crema);
-      border-radius: var(--radius-sm);
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      border-left: 3px solid var(--gold);
-    }
-    .booking-summary p {
-      font-size: 0.85rem;
-      color: var(--text-main);
-    }
-
-    /* SUCURSALES / UBICACIONES (ESTILO HELA SPA) */
-    .locations-section {
-      background: #FFF;
-      border-top: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
-      padding: 5.5rem 2rem;
-    }
-    .locations-grid {
-      max-width: 1380px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.5rem;
-    }
-    .location-card {
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 2rem;
-      background: var(--bg-crema);
-      transition: var(--transition);
-    }
-    .location-card:hover {
-      border-color: var(--gold);
-      background: #FFF;
-      box-shadow: var(--shadow-soft);
-    }
-    .location-title {
-      font-family: var(--font-serif);
-      color: var(--burgundy);
-      font-size: 1.4rem;
-      margin-bottom: 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
-    .location-title i {
-      color: var(--gold);
-      font-size: 1rem;
-    }
-    .location-card p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      margin-bottom: 0.6rem;
-    }
-    .location-actions {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 12px;
-    }
-    .btn-maps {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--burgundy);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    /* FAQ ACCORDION */
-    .faq-section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 5rem 2rem;
-    }
-    .faq-item {
-      border-bottom: 1px solid var(--border-color);
-    }
-    .faq-question {
-      width: 100%;
-      padding: 1.4rem 0;
-      background: none;
-      border: none;
-      text-align: left;
-      font-family: var(--font-serif);
-      font-size: 1.15rem;
-      color: var(--burgundy);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-    }
-    .faq-question i {
-      font-size: 0.9rem;
-      color: var(--gold);
-      transition: transform 0.3s ease;
-    }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.7;
-    }
-    .faq-answer p {
-      padding-bottom: 1.4rem;
-    }
-    .faq-item.active .faq-question i {
-      transform: rotate(180deg);
-    }
-    .faq-item.active .faq-answer {
-      max-height: 300px;
-    }
-
-    /* FOOTER ROBUSTO */
-    footer {
-      background: var(--burgundy-dark);
-      color: #FFF;
-      padding: 5rem 2rem 2rem;
-      border-top: 3px solid var(--gold);
-    }
-    .footer-grid {
-      max-width: 1380px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1.2fr;
-      gap: 3.5rem;
-      margin-bottom: 4rem;
-    }
-    .footer-brand h3 {
-      font-family: var(--font-serif);
-      font-size: 1.7rem;
-      letter-spacing: 2px;
-      margin-bottom: 0.8rem;
-    }
-    .footer-brand p {
-      font-size: 0.86rem;
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.7;
-      max-width: 360px;
-      margin-bottom: 1.5rem;
-    }
-    .footer-socials {
-      display: flex;
-      gap: 14px;
-    }
-    .footer-socials a {
-      color: var(--gold);
-      background: rgba(255, 255, 255, 0.06);
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-    .footer-socials a:hover {
-      background: var(--gold);
-      color: var(--burgundy);
-    }
-    .footer-col h5 {
-      color: var(--gold);
-      font-size: 0.85rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 1.4rem;
-    }
-    .footer-col ul {
-      list-style: none;
-    }
-    .footer-col ul li {
-      margin-bottom: 0.8rem;
-    }
-    .footer-col ul li a {
-      color: rgba(255, 255, 255, 0.75);
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: var(--transition);
-    }
-    .footer-col ul li a:hover {
-      color: var(--gold);
-      padding-left: 4px;
-    }
-    .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 2rem;
-      max-width: 1380px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.78rem;
-      color: rgba(255, 255, 255, 0.5);
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    /* WHATSAPP FLOAT BUTTON */
-    .whatsapp-bubble {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #25D366;
-      color: #FFF;
-      width: 62px;
-      height: 62px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.9rem;
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-      z-index: 1000;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-    .whatsapp-bubble:hover {
-      transform: scale(1.08);
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 1024px) {
-      .hero-container {
-        grid-template-columns: 1fr;
-      }
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      .nav-links {
-        display: none;
-      }
-    }
-    @media (max-width: 768px) {
-      .hero-title {
-        font-size: 2.8rem;
-      }
-      .hero-title em {
-        font-size: 3.2rem;
-      }
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-      .top-bar {
-        display: none;
-      }
-    }
-  </style>
+  <!-- Hoja de Estilos Externa -->
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
 
-  <!-- 1. BARRA SUPERIOR ANUNCIO CORPORATIVO -->
+  <!-- BARRA SUPERIOR ANUNCIO CORPORATIVO -->
   <div class="top-bar">
     <div>
       <i class="fa-solid fa-sparkles"></i> <strong>Especial Septiembre:</strong> Hasta 12 Meses Sin Intereses en todos los protocolos integrales.
@@ -886,7 +30,7 @@
     </div>
   </div>
 
-  <!-- 2. CABECERA PRINCIPAL CON MEGA NAVEGACIÓN -->
+  <!-- CABECERA PRINCIPAL CON NAVEGACIÓN -->
   <header>
     <div class="main-nav">
       <a href="#" class="brand-box">
@@ -898,10 +42,10 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="#catalogo">Tratamientos <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem;"></i></a></li>
+        <li><a href="#catalogo">Tratamientos</a></li>
         <li><a href="#experiencia">Filosofía</a></li>
         <li><a href="#sucursales">Sucursales</a></li>
-        <li><a href="#promociones">Especial Septiembre</a></li>
+        <li><a href="#faq">Dudas</a></li>
       </ul>
 
       <div class="nav-actions">
@@ -924,8 +68,8 @@
     </div>
   </header>
 
-  <!-- 3. HERO SECTION CON MOTOR DE RESERVA RÁPIDA -->
-  <section class="hero">
+  <!-- HERO SECTION CON MOTOR DE RESERVA -->
+  <section class="hero" id="experiencia">
     <div class="hero-container">
       <div>
         <span class="hero-pretitle">
@@ -944,18 +88,18 @@
         </div>
       </div>
 
-      <!-- Formulario Flotante de Reserva (Estilo Hela Spa) -->
+      <!-- Formulario Flotante de Reserva -->
       <div class="quick-booking-card" id="reserva-rapida">
         <h3 class="quick-title">Agenda tu Diagnóstico</h3>
         <p class="quick-subtitle">Elige tu experiencia y recibe confirmación inmediata.</p>
         
-        <form id="bookingForm" onsubmit="handleQuickBooking(event)">
+        <form id="bookingForm">
           <div class="form-group">
             <label>Sucursal</label>
             <select required id="bookBranch">
               <option value="Polanco">Polanco - Campos Elíseos</option>
-              <option value="Roma">Roma Norte - Plaza Río de Janeiro</option>
-              <option value="SantaFe">Santa Fe - Centro Corporativo</option>
+              <option value="Roma Norte">Roma Norte - Plaza Río de Janeiro</option>
+              <option value="Santa Fe">Santa Fe - Centro Corporativo</option>
             </select>
           </div>
 
@@ -971,7 +115,7 @@
             </select>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div class="form-row-dual">
             <div class="form-group">
               <label>Fecha Preferente</label>
               <input type="date" required id="bookDate" />
@@ -996,7 +140,7 @@
     </div>
   </section>
 
-  <!-- 4. CATÁLOGO FILTRABLE DE PROTOCOLOS -->
+  <!-- CATÁLOGO FILTRABLE DE PROTOCOLOS -->
   <section class="section-wrap" id="catalogo">
     <div class="center-heading">
       <span class="label">Catálogo de Bienestar</span>
@@ -1005,18 +149,17 @@
     </div>
 
     <!-- Botones de Filtrado -->
-    <div class="filter-pills">
-      <button class="filter-btn active" onclick="filterServices('todos', this)">Todos</button>
-      <button class="filter-btn" onclick="filterServices('corporal', this)">Corporales & Moldeo</button>
-      <button class="filter-btn" onclick="filterServices('facial', this)">Faciales & Antiedad</button>
-      <button class="filter-btn" onclick="filterServices('laser', this)">Depilación Láser</button>
-      <button class="filter-btn" onclick="filterServices('especiales', this)">Especiales Fénix</button>
+    <div class="filter-pills" id="filterPillsContainer">
+      <button class="filter-btn active" data-category="todos">Todos</button>
+      <button class="filter-btn" data-category="corporal">Corporales & Moldeo</button>
+      <button class="filter-btn" data-category="facial">Faciales & Antiedad</button>
+      <button class="filter-btn" data-category="laser">Depilación Láser</button>
+      <button class="filter-btn" data-category="especiales">Especiales Fénix</button>
     </div>
 
-    <!-- Tarjetas de Tratamientos Extraídas de los Promocionales -->
+    <!-- Grid de Tarjetas de Tratamientos -->
     <div class="treatments-grid" id="servicesGrid">
 
-      <!-- TARJETA 1 -->
       <article class="card-item" data-cat="corporal">
         <div class="card-image-wrap">
           <span class="card-ribbon">16 Sesiones</span>
@@ -1037,12 +180,11 @@
               <span class="regular">12 MSI disponibles</span>
               <span class="current">$14,999</span>
             </div>
-            <button class="btn-select-service" onclick="openBookingModal('Transforma Todo tu Cuerpo', '$14,999')">Reservar</button>
+            <button class="btn-select-service" data-name="Transforma Todo tu Cuerpo" data-price="$14,999">Reservar</button>
           </div>
         </div>
       </article>
 
-      <!-- TARJETA 2 -->
       <article class="card-item" data-cat="facial">
         <div class="card-image-wrap">
           <span class="card-ribbon">8 Sesiones</span>
@@ -1063,12 +205,11 @@
               <span class="regular">$5,200</span>
               <span class="current">$3,900</span>
             </div>
-            <button class="btn-select-service" onclick="openBookingModal('Bye Ojeras Radiantes', '$3,900')">Reservar</button>
+            <button class="btn-select-service" data-name="Bye Ojeras Radiantes" data-price="$3,900">Reservar</button>
           </div>
         </div>
       </article>
 
-      <!-- TARJETA 3 -->
       <article class="card-item" data-cat="facial">
         <div class="card-image-wrap">
           <span class="card-ribbon">15 Sesiones Totales</span>
@@ -1089,12 +230,11 @@
               <span class="regular">$5,500</span>
               <span class="current">$3,900</span>
             </div>
-            <button class="btn-select-service" onclick="openBookingModal('Lifting Facial 360', '$3,900')">Reservar</button>
+            <button class="btn-select-service" data-name="Lifting Facial 360" data-price="$3,900">Reservar</button>
           </div>
         </div>
       </article>
 
-      <!-- TARJETA 4 -->
       <article class="card-item" data-cat="corporal">
         <div class="card-image-wrap">
           <span class="card-ribbon">8 Sesiones</span>
@@ -1115,12 +255,11 @@
               <span class="regular">$8,500</span>
               <span class="current">$6,200</span>
             </div>
-            <button class="btn-select-service" onclick="openBookingModal('Bye Celulitis & Glúteos', '$6,200')">Reservar</button>
+            <button class="btn-select-service" data-name="Bye Celulitis & Glúteos" data-price="$6,200">Reservar</button>
           </div>
         </div>
       </article>
 
-      <!-- TARJETA 5 -->
       <article class="card-item" data-cat="laser">
         <div class="card-image-wrap">
           <span class="card-ribbon">10 Sesiones</span>
@@ -1141,12 +280,11 @@
               <span class="regular">$19,500</span>
               <span class="current">$14,999</span>
             </div>
-            <button class="btn-select-service" onclick="openBookingModal('Depilación Láser Full Body', '$14,999')">Reservar</button>
+            <button class="btn-select-service" data-name="Depilación Láser Full Body" data-price="$14,999">Reservar</button>
           </div>
         </div>
       </article>
 
-      <!-- TARJETA 6 -->
       <article class="card-item" data-cat="especiales">
         <div class="card-image-wrap">
           <span class="card-ribbon">5 Sesiones</span>
@@ -1167,7 +305,7 @@
               <span class="regular">$7,500</span>
               <span class="current">$4,250</span>
             </div>
-            <button class="btn-select-service" onclick="openBookingModal('Bye Estrías Brasileñas', '$4,250')">Reservar</button>
+            <button class="btn-select-service" data-name="Bye Estrías Brasileñas" data-price="$4,250">Reservar</button>
           </div>
         </div>
       </article>
@@ -1175,7 +313,7 @@
     </div>
   </section>
 
-  <!-- 5. DIRECTORIO DE SUCURSALES (ANÁLOGO A HELA POLANCO / ROMA / SANTA FE) -->
+  <!-- DIRECTORIO DE SUCURSALES -->
   <section class="locations-section" id="sucursales">
     <div class="center-heading">
       <span class="label">Nuestras Casas</span>
@@ -1216,7 +354,7 @@
     </div>
   </section>
 
-  <!-- 6. PREGUNTAS FRECUENTES (ACCORDION) -->
+  <!-- PREGUNTAS FRECUENTES -->
   <section class="faq-section" id="faq">
     <div class="center-heading">
       <span class="label">Dudas Frecuentes</span>
@@ -1224,7 +362,7 @@
     </div>
 
     <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">
+      <button class="faq-question">
         ¿Cómo funciona la primera sesión de valoración?
         <i class="fa-solid fa-chevron-down"></i>
       </button>
@@ -1234,7 +372,7 @@
     </div>
 
     <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">
+      <button class="faq-question">
         ¿Los tratamientos requieren tiempo de reposo o incapacidad?
         <i class="fa-solid fa-chevron-down"></i>
       </button>
@@ -1244,7 +382,7 @@
     </div>
 
     <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">
+      <button class="faq-question">
         ¿Qué facilidades de pago ofrecen?
         <i class="fa-solid fa-chevron-down"></i>
       </button>
@@ -1254,7 +392,7 @@
     </div>
 
     <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">
+      <button class="faq-question">
         ¿Con cuánta anticipación debo cancelar o reprogramar?
         <i class="fa-solid fa-chevron-down"></i>
       </button>
@@ -1264,19 +402,19 @@
     </div>
   </section>
 
-  <!-- 7. MODAL DE CONFIRMACIÓN DE CITA -->
+  <!-- MODAL DE CONFIRMACIÓN DE CITA -->
   <div class="modal-overlay" id="bookingModal">
     <div class="modal-box">
       <div class="modal-header">
         <h4>Agendar Protocolo</h4>
-        <button class="btn-close-modal" onclick="closeBookingModal()">&times;</button>
+        <button class="btn-close-modal" id="closeModalBtn">&times;</button>
       </div>
       <div class="modal-body">
         <div class="booking-summary">
           <p><strong>Tratamiento:</strong> <span id="modalServiceName"></span></p>
           <p><strong>Inversión Especial:</strong> <span id="modalServicePrice" style="color: var(--burgundy); font-weight: 700;"></span></p>
         </div>
-        <form onsubmit="confirmModalBooking(event)">
+        <form id="modalBookingForm">
           <div class="form-group">
             <label>Nombre y Apellido</label>
             <input type="text" required id="custName" placeholder="Tu nombre completo" />
@@ -1301,7 +439,7 @@
     </div>
   </div>
 
-  <!-- 8. FOOTER CORPORATIVO -->
+  <!-- FOOTER CORPORATIVO -->
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
@@ -1351,116 +489,12 @@
     </div>
   </footer>
 
-  <!-- WHATSAPP FLOATING BUTTON -->
+  <!-- BOTÓN FLOTANTE DE WHATSAPP -->
   <a href="https://wa.me/5215500000000?text=Hola,%20deseo%20información%20general%20sobre%20los%20tratamientos%20de%20Casa%20Fénix" class="whatsapp-bubble" target="_blank" title="Contactar por WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
-  <!-- LOGICA JAVASCRIPT ROBUSTA -->
-  <script>
-    // 1. Buscador Rápido
-    const toggleSearch = document.getElementById('toggleSearch');
-    const searchContainer = document.getElementById('searchContainer');
-    const closeSearch = document.getElementById('closeSearch');
-    const searchInput = document.getElementById('searchInput');
-
-    toggleSearch.addEventListener('click', () => {
-      searchContainer.classList.toggle('open');
-      if (searchContainer.classList.contains('open')) {
-        searchInput.focus();
-      }
-    });
-
-    closeSearch.addEventListener('click', () => {
-      searchContainer.classList.remove('open');
-    });
-
-    // Filtro instantáneo mediante el buscador
-    searchInput.addEventListener('input', (e) => {
-      const term = e.target.value.toLowerCase();
-      const cards = document.querySelectorAll('.card-item');
-      
-      cards.forEach(card => {
-        const text = card.innerText.toLowerCase();
-        card.style.display = text.includes(term) ? 'flex' : 'none';
-      });
-    });
-
-    // 2. Filtros por Categoría (Tabs)
-    function filterServices(category, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const cards = document.querySelectorAll('.card-item');
-      cards.forEach(card => {
-        if (category === 'todos' || card.getAttribute('data-cat') === category) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-
-    // 3. Modal de Reservación
-    const bookingModal = document.getElementById('bookingModal');
-    const modalServiceName = document.getElementById('modalServiceName');
-    const modalServicePrice = document.getElementById('modalServicePrice');
-
-    function openBookingModal(name, price) {
-      modalServiceName.textContent = name;
-      modalServicePrice.textContent = price;
-      bookingModal.classList.add('active');
-    }
-
-    function closeBookingModal() {
-      bookingModal.classList.remove('active');
-    }
-
-    window.addEventListener('click', (e) => {
-      if (e.target === bookingModal) {
-        closeBookingModal();
-      }
-    });
-
-    function confirmModalBooking(e) {
-      e.preventDefault();
-      const name = document.getElementById('custName').value;
-      const phone = document.getElementById('custPhone').value;
-      const branch = document.getElementById('custBranch').value;
-      const service = modalServiceName.textContent;
-
-      const message = `Hola Casa Fénix, deseo agendar el servicio *${service}* en sucursal *${branch}*. Mi nombre es *${name}* y mi celular es *${phone}*.`;
-      const waUrl = `https://wa.me/5215500000000?text=${encodeURIComponent(message)}`;
-      
-      window.open(waUrl, '_blank');
-      closeBookingModal();
-    }
-
-    // 4. Formulario de Reserva Rápida del Hero
-    function handleQuickBooking(e) {
-      e.preventDefault();
-      const branch = document.getElementById('bookBranch').value;
-      const service = document.getElementById('bookService').value;
-      const date = document.getElementById('bookDate').value;
-      const time = document.getElementById('bookTime').value;
-
-      const message = `Hola Casa Fénix, deseo agendar cita:\n- Protocolo: ${service}\n- Sucursal: ${branch}\n- Fecha: ${date}\n- Horario: ${time}`;
-      const waUrl = `https://wa.me/5215500000000?text=${encodeURIComponent(message)}`;
-      
-      window.open(waUrl, '_blank');
-    }
-
-    // 5. Acordeón Interactivo de FAQs
-    function toggleFaq(btn) {
-      const item = btn.parentElement;
-      const isActive = item.classList.contains('active');
-      
-      document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('active'));
-      
-      if (!isActive) {
-        item.classList.add('active');
-      }
-    }
-  </script>
+  <!-- Script Externo -->
+  <script src="js/main.js"></script>
 </body>
 </html>
