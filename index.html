@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa Fénix | Donde vuelves a elegirte</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --burgundy: #4E0F1B;
+            --burgundy-dark: #320810;
+            --burgundy-light: #721829;
+            --gold: #B88E56;
+            --gold-light: #DFCAAB;
+            --gold-gradient: linear-gradient(135deg, #B88E56 0%, #D4AF77 50%, #A37943 100%);
+            --cream-bg: #F7F3EE;
+            --card-bg: #FFFFFF;
+            --text-dark: #2A1F1D;
+            --text-muted: #7A6F6D;
+            --border-light: rgba(184, 142, 86, 0.25);
+            --shadow-soft: 0 10px 30px rgba(78, 15, 27, 0.05);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* TIPOGRAFÍAS */
+        h1, h2, h3, .serif-font {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.5px;
+        }
+
+        .script-font {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        /* HEADER / NAVEGACIÓN */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(247, 243, 238, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .logo-area {
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .logo-title {
+            font-size: 1.4rem;
+            letter-spacing: 4px;
+            font-weight: 600;
+            color: var(--burgundy);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-subtitle {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--burgundy);
+        }
+
+        /* BOTONES */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            text-transform: uppercase;
+        }
+
+        .btn-burgundy {
+            background-color: var(--burgundy);
+            color: #FFFFFF;
+            box-shadow: 0 4px 15px rgba(78, 15, 27, 0.2);
+        }
+
+        .btn-burgundy:hover {
+            background-color: var(--burgundy-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(78, 15, 27, 0.3);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 9rem 1.5rem 5rem;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(circle at 80% 20%, rgba(223, 202, 171, 0.3) 0%, transparent 60%);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(78, 15, 27, 0.06);
+            color: var(--burgundy);
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(78, 15, 27, 0.1);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            color: var(--burgundy);
+            margin-bottom: 1rem;
+        }
+
+        .hero-title span {
+            font-size: 4rem;
+            color: var(--gold);
+            display: block;
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-banner-image {
+            position: relative;
+            border-radius: 200px 200px 20px 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            background-color: var(--gold-light);
+        }
+
+        .hero-banner-image img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-floating-card {
+            position: absolute;
+            bottom: 20px;
+            left: -20px;
+            background: #FFFFFF;
+            padding: 1.2rem 1.8rem;
+            border-radius: 16px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--gold);
+        }
+
+        .hero-floating-card h4 {
+            color: var(--burgundy);
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .hero-floating-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* PILARES / BENEFICIOS */
+        .features-strip {
+            background-color: #FFFFFF;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            padding: 2.5rem 1.5rem;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .feature-item i {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-item h5 {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--burgundy);
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* PROTOCOLOS Y PROMOCIONES */
+        .treatments-section {
+            padding: 6rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-tag {
+            color: var(--gold);
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--burgundy);
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .treatment-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(184, 142, 86, 0.2);
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .treatment-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(78, 15, 27, 0.1);
+        }
+
+        .card-ribbon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--burgundy);
+            color: #FFFFFF;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .card-body {
+            padding: 2.5rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-header-protocol {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            color: var(--burgundy);
+            margin-bottom: 0.4rem;
+        }
+
+        .card-subtitle {
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+        }
+
+        .card-sessions {
+            background: rgba(184, 142, 86, 0.1);
+            color: var(--text-dark);
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .card-features li {
+            font-size: 0.85rem;
+            margin-bottom: 0.6rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-features li i {
+            color: var(--gold);
+            font-size: 0.8rem;
+        }
+
+        .card-pricing {
+            border-top: 1px solid rgba(184, 142, 86, 0.15);
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price-regular {
+            text-decoration: line-through;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .price-special {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--burgundy);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .price-msi {
+            font-size: 0.7rem;
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* TESTIMONIOS / MANIFIESTO */
+        .manifesto-section {
+            background: linear-gradient(rgba(78, 15, 27, 0.95), rgba(78, 15, 27, 0.95)), url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80') center/cover fixed;
+            color: #FFFFFF;
+            padding: 6rem 1.5rem;
+            text-align: center;
+        }
+
+        .manifesto-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .manifesto-phrase {
+            font-size: 2.2rem;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+        }
+
+        .manifesto-author {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #24050B;
+            color: #FFFFFF;
+            padding: 4rem 1.5rem 2rem;
+            border-top: 2px solid var(--gold);
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo h3 {
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-desc {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            max-width: 380px;
+        }
+
+        .footer-col h5 {
+            color: var(--gold-light);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--gold-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* BOTÓN FLOTANTE DE WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: #FFF;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            text-decoration: none;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-floating-card {
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80%;
+            }
+            .hero-desc {
+                margin: 0 auto 2rem;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo-area">
+                <div class="logo-title">
+                    <i class="fa-solid fa-dove" style="font-size: 1rem; color: var(--gold);"></i>
+                    CASA FÉNIX
+                </div>
+                <div class="logo-subtitle">Donde vuelves a elegirte</div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#tratamientos">Protocolos</a></li>
+                <li><a href="#experiencia">Filosofía</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+            </ul>
+            <a href="https://wa.me/521234567890?text=Hola,%20deseo%20agendar%20mi%20valoración%20en%20Casa%20Fénix" target="_blank" class="btn btn-burgundy">
+                Agendar Valoración <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-container">
+            <div>
+                <div class="hero-tag">
+                    <i class="fa-solid fa-heart"></i> Mes de volver a elegirte
+                </div>
+                <h1 class="hero-title">
+                    Transforma <span class="script-font">Todo tu Cuerpo</span>
+                </h1>
+                <p class="hero-desc">
+                    Reafirma, moldea y define. Tratamientos no invasivos de vanguardia médica y estética diseñados en honor a tu historia y bienestar.
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="#tratamientos" class="btn btn-burgundy">Ver Promociones Especiales</a>
+                    <a href="https://wa.me/521234567890" target="_blank" class="btn" style="border: 1px solid var(--burgundy); color: var(--burgundy);">Hablar con Especialista</a>
+                </div>
+            </div>
+            <div class="hero-banner-image">
+                <!-- Imagen estética de alta calidad -->
+                <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=800&q=80" alt="Cuidado corporal Casa Fenix">
+                <div class="hero-floating-card">
+                    <h4>Hasta 12 MSI</h4>
+                    <p>Tratamientos seguros, médicos y 100% personalizados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PILARES DE VALOR -->
+    <section class="features-strip" id="beneficios">
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <h5>Estética Avanzada</h5>
+                <p>Equipos de grado médico como Soprano Titanium y Cavitación profunda.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-notes-medical"></i>
+                <h5>Valoración Médica</h5>
+                <p>Protocolos individualizados según tus metas y fisionomía.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-credit-card"></i>
+                <h5>Facilidades de Pago</h5>
+                <p>Hasta 12 Meses Sin Intereses en todos los paquetes corporales.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-leaf"></i>
+                <h5>Resultados Reales</h5>
+                <p>Tecnologías sin incapacidad y con cambios progresivos duraderos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATÁLOGO DE TRATAMIENTOS / CARDS EXTRAÍDAS -->
+    <section class="treatments-section" id="tratamientos">
+        <div class="section-header">
+            <span class="section-tag">Especial de Temporada</span>
+            <h2 class="section-title">Protocolos Clínicos Integrales</h2>
+            <p class="section-desc">Seleccionamos las combinaciones más potentes para brindarte resultados visibles desde las primeras sesiones.</p>
+        </div>
+
+        <div class="cards-grid">
+            
+            <!-- TARJETA 1: TRANSFORMA TODO TU CUERPO -->
+            <div class="treatment-card">
+                <div class="card-ribbon">Más Solicitado</div>
+                <div class="card-body">
+                    <span class="card-header-protocol">Cuerpo Completo</span>
+                    <h3 class="card-title">Transforma</h3>
+                    <div class="card-subtitle script-font">Todo tu Cuerpo</div>
+                    <span class="card-sessions">8 Sesiones Aparatología + 8 Sesiones Lipoenzimas</span>
+                    
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Radiofrecuencia, Ultrasonido y Cavitación</li>
+                        <li><i class="fa-solid fa-check"></i> Vacuum, Ondas de choque y Drenaje</li>
+                        <li><i class="fa-solid fa-check"></i> Reduce grasa localizada y mejora flacidez</li>
+                        <li><i class="fa-solid fa-check"></i> Zona: Abdomen, Glúteos, Piernas y Brazos</li>
+                    </ul>
+
+                    <div class="card-pricing">
+                        <div>
+                            <span class="price-regular">Hasta 12 MSI</span>
+                            <div class="price-special">$14,999</div>
+                        </div>
+                        <a href="https://wa.me/521234567890?text=Me%20interesa%20el%20paquete%20Transforma%20Todo%20tu%20Cuerpo" target="_blank" class="btn btn-burgundy" style="padding: 0.6rem 1.2rem;">Elegir</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TARJETA 2: BYE OJERAS -->
+            <div class="treatment-card">
+                <div class="card-body">
+                    <span class="card-header-protocol">Rejuvenecimiento Facial</span>
+                    <h3 class="card-title">Bye</h3>
+                    <div class="card-subtitle script-font">Ojeras & Iluminación</div>
+                    <span class="card-sessions">8 Sesiones de Protocolo Especializado</span>
+                    
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Carbóx Facial (Oxigena y desintoxica)</li>
+                        <li><i class="fa-solid fa-check"></i> Bioestimulación de Colágeno</li>
+                        <li><i class="fa-solid fa-check"></i> Radiofrecuencia tensora periorbital</li>
+                        <li><i class="fa-solid fa-check"></i> Disminuye bolsas oscuras y signos de fatiga</li>
+                    </ul>
+
+                    <div class="card-pricing">
+                        <div>
+                            <span class="price-regular">Precio regular $5,200</span>
+                            <div class="price-special">$3,900</div>
+                        </div>
+                        <a href="https://wa.me/521234567890?text=Me%20interesa%20el%20paquete%20Bye%20Ojeras" target="_blank" class="btn btn-burgundy" style="padding: 0.6rem 1.2rem;">Elegir</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TARJETA 3: BYE CELULITIS -->
+            <div class="treatment-card">
+                <div class="card-body">
+                    <span class="card-header-protocol">Firmeza & Levantamiento</span>
+                    <h3 class="card-title">Bye</h3>
+                    <div class="card-subtitle script-font">Celulitis & Glúteos</div>
+                    <span class="card-sessions">8 Sesiones Corporales</span>
+                    
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Ondas de choque (rompe fibrosis)</li>
+                        <li><i class="fa-solid fa-check"></i> Estimulación muscular y Radiofrecuencia</li>
+                        <li><i class="fa-solid fa-check"></i> Vacuum + Drenaje Linfático activo</li>
+                        <li><i class="fa-solid fa-check"></i> Zona: Glúteos, piernas y cadera integrados</li>
+                    </ul>
+
+                    <div class="card-pricing">
+                        <div>
+                            <span class="price-regular">Precio regular $8,500</span>
+                            <div class="price-special">$6,200</div>
+                        </div>
+                        <a href="https://wa.me/521234567890?text=Me%20interesa%20el%20paquete%20Bye%20Celulitis" target="_blank" class="btn btn-burgundy" style="padding: 0.6rem 1.2rem;">Elegir</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TARJETA 4: DEPILACIÓN LÁSER FULL BODY -->
+            <div class="treatment-card">
+                <div class="card-ribbon">Ahorro $4,501</div>
+                <div class="card-body">
+                    <span class="card-header-protocol">Tecnología Soprano Titanium</span>
+                    <h3 class="card-title">Full Body</h3>
+                    <div class="card-subtitle script-font">Libertad Absoluta</div>
+                    <span class="card-sessions">10 Sesiones Cuerpo Completo</span>
+                    
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Tratamiento indoloro y seguro</li>
+                        <li><i class="fa-solid fa-check"></i> Apto para todos los tonos de piel y vello</li>
+                        <li><i class="fa-solid fa-check"></i> Piernas, Brazos, Axilas, Bikini, Espalda, Abdomen</li>
+                        <li><i class="fa-solid fa-check"></i> Valoración y test de pulso incluido</li>
+                    </ul>
+
+                    <div class="card-pricing">
+                        <div>
+                            <span class="price-regular">$19,500</span>
+                            <div class="price-special">$14,999</div>
+                        </div>
+                        <a href="https://wa.me/521234567890?text=Me%20interesa%20la%20Depilación%20Full%20Body" target="_blank" class="btn btn-burgundy" style="padding: 0.6rem 1.2rem;">Elegir</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TARJETA 5: LIFTING FACIAL 360 -->
+            <div class="treatment-card">
+                <div class="card-body">
+                    <span class="card-header-protocol">Rostro, Cuello y Papada</span>
+                    <h3 class="card-title">Lifting</h3>
+                    <div class="card-subtitle script-font">Facial 360°</div>
+                    <span class="card-sessions">6 RF + 6 Ultrasonido + 3 Lipoenzimas</span>
+                    
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Estimula producción masiva de colágeno</li>
+                        <li><i class="fa-solid fa-check"></i> Disminución efectiva de papada</li>
+                        <li><i class="fa-solid fa-check"></i> Define ángulo mandibular y pómulos</li>
+                        <li><i class="fa-solid fa-check"></i> Efecto tensor progresivo natural</li>
+                    </ul>
+
+                    <div class="card-pricing">
+                        <div>
+                            <span class="price-regular">Precio regular $5,500</span>
+                            <div class="price-special">$3,900</div>
+                        </div>
+                        <a href="https://wa.me/521234567890?text=Me%20interesa%20el%20Lifting%20Facial%20360" target="_blank" class="btn btn-burgundy" style="padding: 0.6rem 1.2rem;">Elegir</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TARJETA 6: BYE ESTRÍAS -->
+            <div class="treatment-card">
+                <div class="card-body">
+                    <span class="card-header-protocol">Micropuntura Brasileña</span>
+                    <h3 class="card-title">Bye</h3>
+                    <div class="card-subtitle script-font">Estrías Reales</div>
+                    <span class="card-sessions">5 Sesiones (Zona a Elegir)</span>
+                    
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Regeneración celular dérmica profunda</li>
+                        <li><i class="fa-solid fa-check"></i> Atenúa textura, profundidad y color</li>
+                        <li><i class="fa-solid fa-check"></i> Todas las estrías de la zona en 45 min</li>
+                        <li><i class="fa-solid fa-check"></i> Piel notablemente más uniforme y suave</li>
+                    </ul>
+
+                    <div class="card-pricing">
+                        <div>
+                            <span class="price-regular">$7,500</span>
+                            <div class="price-special">$4,250</div>
+                        </div>
+                        <a href="https://wa.me/521234567890?text=Me%20interesa%20el%20paquete%20Bye%20Estrías" target="_blank" class="btn btn-burgundy" style="padding: 0.6rem 1.2rem;">Elegir</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MANIFIESTO EDITORIAL -->
+    <section class="manifesto-section" id="experiencia">
+        <div class="manifesto-content">
+            <i class="fa-solid fa-heart" style="color: var(--gold-light); font-size: 1.5rem; margin-bottom: 1.5rem;"></i>
+            <p class="manifesto-phrase script-font">
+                "Cuidarte también es un acto de amor a tu historia. Tu cuerpo y tu piel merecen volver a ser tu prioridad."
+            </p>
+            <span class="manifesto-author">Casa Fénix &mdash; Donde vuelves a elegirte</span>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <h3 class="serif-font">CASA FÉNIX</h3>
+                <p class="footer-desc">
+                    Clínica de bienestar, aparatología avanzada y medicina estética no invasiva. Diseñado para acompañarte en tu transformación con dignidad y exclusividad.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h5>Protocolos</h5>
+                <ul>
+                    <li><a href="#tratamientos">Reductivos & Moldeo</a></li>
+                    <li><a href="#tratamientos">Lifting & Antiedad</a></li>
+                    <li><a href="#tratamientos">Depilación Láser</a></li>
+                    <li><a href="#tratamientos">Celulitis & Estrías</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Atención & Citas</h5>
+                <ul>
+                    <li><a href="#">Lunes a Sábado: 9am - 8pm</a></li>
+                    <li><a href="#">Valoraciones Diagnósticas</a></li>
+                    <li><a href="#">Meses Sin Intereses</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Casa Fénix. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/521234567890?text=Hola,%20quisiera%20más%20información%20sobre%20los%20tratamientos" class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
