@@ -5,35 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CASA FÉNIX | Spa & Clínica Estética Avanzada</title>
   
-  <!-- Tipografías de Alta Gama -->
+  <!-- Tipografías de Marca -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
   
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-  <!-- Hoja de Estilos Externa -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
 
-  <!-- BARRA SUPERIOR ANUNCIO CORPORATIVO -->
-  <div class="top-bar">
-    <div>
-      <i class="fa-solid fa-sparkles"></i> <strong>Especial Septiembre:</strong> Hasta 12 Meses Sin Intereses en todos los protocolos integrales.
+  <!-- CINTILLA SUPERIOR EDITABLE EN TIEMPO REAL -->
+  <div class="top-bar" id="announcementBar">
+    <div id="announcementText">
+      <!-- Inyectado dinámicamente -->
     </div>
     <div class="top-links">
-      <a href="#sucursales"><i class="fa-solid fa-location-dot"></i> Polanco & Roma Norte</a>
+      <a href="#spa-party"><i class="fa-solid fa-champagne-glasses"></i> Spa Party & Eventos</a>
+      <a href="#sucursales"><i class="fa-solid fa-location-dot"></i> Sucursales</a>
       <a href="tel:+525500000000"><i class="fa-solid fa-phone"></i> (55) 4432-8900</a>
-      <a href="#faq">Preguntas Frecuentes</a>
+      <a href="dashboard.html" class="staff-access-btn"><i class="fa-solid fa-user-lock"></i> Acceso Staff</a>
     </div>
   </div>
 
-  <!-- CABECERA PRINCIPAL CON NAVEGACIÓN -->
+  <!-- CABECERA PRINCIPAL -->
   <header>
     <div class="main-nav">
-      <a href="#" class="brand-box">
+      <a href="index.html" class="brand-box">
         <div class="brand-name">
           <i class="fa-solid fa-feather-pointed" style="color: var(--gold); font-size: 1.2rem;"></i>
           CASA FÉNIX
@@ -43,13 +42,14 @@
 
       <ul class="nav-links">
         <li><a href="#catalogo">Tratamientos</a></li>
-        <li><a href="#experiencia">Filosofía</a></li>
-        <li><a href="#sucursales">Sucursales</a></li>
+        <li><a href="#spa-party" class="highlight-link"><i class="fa-solid fa-crown" style="font-size: 0.75rem; color: var(--gold);"></i> Spa Party</a></li>
+        <li><a href="#sucursales">Nuestras Casas</a></li>
+        <li><a href="#resenas">Experiencias</a></li>
         <li><a href="#faq">Dudas</a></li>
       </ul>
 
       <div class="nav-actions">
-        <button class="btn-search" id="toggleSearch" title="Buscar protocolo">
+        <button class="btn-search" id="toggleSearch" title="Buscar tratamiento">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
         <a href="#reserva-rapida" class="btn-reserve">
@@ -58,17 +58,17 @@
       </div>
     </div>
 
-    <!-- Buscador Desplegable -->
+    <!-- Buscador en Vivo -->
     <div class="search-bar-container" id="searchContainer">
       <div class="search-inner">
         <i class="fa-solid fa-magnifying-glass" style="color: var(--gold);"></i>
-        <input type="text" id="searchInput" placeholder="Busca por tratamiento: Cavitación, Lifting, Depilación, Ojeras..." />
+        <input type="text" id="searchInput" placeholder="Buscar por protocolo: Cavitación, Spa Party, Láser, Lifting..." />
         <i class="fa-solid fa-times" id="closeSearch" style="cursor: pointer; color: #999;"></i>
       </div>
     </div>
   </header>
 
-  <!-- HERO SECTION CON MOTOR DE RESERVA -->
+  <!-- HERO SECTION -->
   <section class="hero" id="experiencia">
     <div class="hero-container">
       <div>
@@ -79,19 +79,19 @@
           Transforma <em>Todo tu Cuerpo</em>
         </h1>
         <p class="hero-lead">
-          Experiencias de spa clínico y aparatología estética de vanguardia médica. Tratamientos no invasivos diseñados para reafirmar, moldear y definir en un ambiente de serenidad absoluta.
+          Experiencias de spa clínico y aparatología médica. Protocolos no invasivos para reafirmar, tonificar y reconectar en un entorno de paz absoluta.
         </p>
         <div class="hero-badges">
           <div class="badge-item"><i class="fa-solid fa-shield-halved"></i> Grado Médico Certificado</div>
           <div class="badge-item"><i class="fa-solid fa-credit-card"></i> Hasta 12 MSI</div>
-          <div class="badge-item"><i class="fa-solid fa-user-doctor"></i> Valoración Personalizada</div>
+          <div class="badge-item"><i class="fa-solid fa-glass-cheers"></i> Suites VIP Privadas</div>
         </div>
       </div>
 
-      <!-- Formulario Flotante de Reserva -->
+      <!-- Quick Booking Form -->
       <div class="quick-booking-card" id="reserva-rapida">
         <h3 class="quick-title">Agenda tu Diagnóstico</h3>
-        <p class="quick-subtitle">Elige tu experiencia y recibe confirmación inmediata.</p>
+        <p class="quick-subtitle">Elige tu experiencia y recibe confirmación personalizada.</p>
         
         <form id="bookingForm">
           <div class="form-group">
@@ -106,12 +106,7 @@
           <div class="form-group">
             <label>Tratamiento o Protocolo</label>
             <select required id="bookService">
-              <option value="Transforma Todo tu Cuerpo ($14,999)">Transforma Todo tu Cuerpo - 16 Sesiones</option>
-              <option value="Lifting Facial 360 ($3,900)">Lifting Facial 360 - Rostro, Cuello y Papada</option>
-              <option value="Bye Ojeras ($3,900)">Bye Ojeras - Carbóx + Radiofrecuencia</option>
-              <option value="Depilación Láser Full Body ($14,999)">Depilación Soprano Titanium Full Body</option>
-              <option value="Bye Celulitis ($6,200)">Bye Celulitis & Glúteos Firmes</option>
-              <option value="Bye Estrías ($4,250)">Bye Estrías - Micropuntura Brasileña</option>
+              <!-- Opciones sincronizadas en tiempo real desde el catálogo -->
             </select>
           </div>
 
@@ -140,185 +135,110 @@
     </div>
   </section>
 
-  <!-- CATÁLOGO FILTRABLE DE PROTOCOLOS -->
-  <section class="section-wrap" id="catalogo">
-    <div class="center-heading">
-      <span class="label">Catálogo de Bienestar</span>
-      <h2>Protocolos & Experiencias de Spa</h2>
-      <p>Tratamientos integrales formulados para brindar resultados visibles y progresivos con aparatología no invasiva.</p>
-    </div>
+  <!-- SECCIÓN SPA PARTY & CELEBRACIONES PRIVADAS -->
+  <section class="spa-party-section" id="spa-party">
+    <div class="spa-party-container">
+      <div class="spa-party-info">
+        <span class="party-tag"><i class="fa-solid fa-crown"></i> Experiencias Exclusivas</span>
+        <h2 class="party-title">Spa Party &amp; <em>Celebraciones Privadas</em></h2>
+        <p class="party-desc">
+          Reserva una cabina VIP o suite privada para consentirte junto a tus personas favoritas. Despedidas de soltera, cumpleaños, aniversarios o retiros corporativos.
+        </p>
 
-    <!-- Botones de Filtrado -->
-    <div class="filter-pills" id="filterPillsContainer">
-      <button class="filter-btn active" data-category="todos">Todos</button>
-      <button class="filter-btn" data-category="corporal">Corporales & Moldeo</button>
-      <button class="filter-btn" data-category="facial">Faciales & Antiedad</button>
-      <button class="filter-btn" data-category="laser">Depilación Láser</button>
-      <button class="filter-btn" data-category="especiales">Especiales Fénix</button>
-    </div>
-
-    <!-- Grid de Tarjetas de Tratamientos -->
-    <div class="treatments-grid" id="servicesGrid">
-
-      <article class="card-item" data-cat="corporal">
-        <div class="card-image-wrap">
-          <span class="card-ribbon">16 Sesiones</span>
-          <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=600&q=80" alt="Transforma Todo Tu Cuerpo" />
-        </div>
-        <div class="card-content">
-          <span class="card-category">Protocolo Corporal Completo</span>
-          <h3 class="card-title">Transforma</h3>
-          <div class="card-subtitle">Todo tu Cuerpo</div>
-          <p class="card-desc">Reafirma, moldea y define. Combinación de 8 sesiones de aparatología y 8 sesiones de lipoenzimas focalizadas.</p>
-          <ul class="card-specs">
-            <li><i class="fa-solid fa-check"></i> Radiofrecuencia, Cavitación & Vacuodermia</li>
-            <li><i class="fa-solid fa-check"></i> Ondas de choque & Drenaje Linfático</li>
-            <li><i class="fa-solid fa-check"></i> Todo el cuerpo: abdomen, flancos, glúteos y piernas</li>
-          </ul>
-          <div class="card-footer">
-            <div class="price-block">
-              <span class="regular">12 MSI disponibles</span>
-              <span class="current">$14,999</span>
-            </div>
-            <button class="btn-select-service" data-name="Transforma Todo tu Cuerpo" data-price="$14,999">Reservar</button>
+        <div class="party-perks-grid">
+          <div class="perk-box">
+            <i class="fa-solid fa-martini-glass-citrus"></i>
+            <h6>Brindis &amp; Mimosas</h6>
+            <p>Vino espumoso, coctelería wellness e infusiones botánicas.</p>
+          </div>
+          <div class="perk-box">
+            <i class="fa-solid fa-plate-wheat"></i>
+            <h6>Catering Gourmet</h6>
+            <p>Tablas de quesos artesanales, charcutería y frutos rojos.</p>
+          </div>
+          <div class="perk-box">
+            <i class="fa-solid fa-spa"></i>
+            <h6>Circuito de Cabina</h6>
+            <p>Masajes descontracturantes, faciales glow y aparatología express.</p>
+          </div>
+          <div class="perk-box">
+            <i class="fa-solid fa-gift"></i>
+            <h6>Kit Fénix de Regalo</h6>
+            <p>Detalle de bienvenida de alta cosmética para cada invitada.</p>
           </div>
         </div>
-      </article>
+      </div>
 
-      <article class="card-item" data-cat="facial">
-        <div class="card-image-wrap">
-          <span class="card-ribbon">8 Sesiones</span>
-          <img src="https://images.unsplash.com/photo-1512290900672-1f408a000165?auto=format&fit=crop&w=600&q=80" alt="Bye Ojeras" />
-        </div>
-        <div class="card-content">
-          <span class="card-category">Área Periorbital</span>
-          <h3 class="card-title">Bye</h3>
-          <div class="card-subtitle">Ojeras Radiantes</div>
-          <p class="card-desc">Mirada más fresca, descansada y luminosa. Estimula el colágeno y desintoxica tejidos periorbitales.</p>
-          <ul class="card-specs">
-            <li><i class="fa-solid fa-check"></i> Carbóx Facial oxigenante</li>
-            <li><i class="fa-solid fa-check"></i> Bioestimulación celular profunda</li>
-            <li><i class="fa-solid fa-check"></i> Radiofrecuencia periocular</li>
-          </ul>
-          <div class="card-footer">
-            <div class="price-block">
-              <span class="regular">$5,200</span>
-              <span class="current">$3,900</span>
-            </div>
-            <button class="btn-select-service" data-name="Bye Ojeras Radiantes" data-price="$3,900">Reservar</button>
-          </div>
-        </div>
-      </article>
+      <!-- Cotizador en Vivo de Spa Party -->
+      <div class="party-calculator-card">
+        <h3>Cotiza tu Spa Party</h3>
+        <p>Personaliza tu celebración y recibe costo estimado al instante:</p>
 
-      <article class="card-item" data-cat="facial">
-        <div class="card-image-wrap">
-          <span class="card-ribbon">15 Sesiones Totales</span>
-          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80" alt="Lifting Facial 360" />
+        <div class="calc-group">
+          <label>Plan Spa Party</label>
+          <select id="partyPackage">
+            <option value="1800">Golden Glow (Masaje + Facial Express) - $1,800 p/p</option>
+            <option value="2500" selected>Fénix Imperial (Masaje + Facial + Aparatología) - $2,500 p/p</option>
+            <option value="3400">Bridal Sanctuary (Circuito Completo + Regalo Especial) - $3,400 p/p</option>
+          </select>
         </div>
-        <div class="card-content">
-          <span class="card-category">Rostro, Cuello y Papada</span>
-          <h3 class="card-title">Lifting</h3>
-          <div class="card-subtitle">Facial 360°</div>
-          <p class="card-desc">Define y tonifica el óvalo mandibular y cuello. Reduce adiposidad submentoniana y estimula tensión dérmica.</p>
-          <ul class="card-specs">
-            <li><i class="fa-solid fa-check"></i> 6 RF + 6 Ultrasonido Tonificante</li>
-            <li><i class="fa-solid fa-check"></i> 3 Sesiones de Lipoenzimas Reductoras</li>
-            <li><i class="fa-solid fa-check"></i> Valoración diagnóstica incluida</li>
-          </ul>
-          <div class="card-footer">
-            <div class="price-block">
-              <span class="regular">$5,500</span>
-              <span class="current">$3,900</span>
-            </div>
-            <button class="btn-select-service" data-name="Lifting Facial 360" data-price="$3,900">Reservar</button>
-          </div>
-        </div>
-      </article>
 
-      <article class="card-item" data-cat="corporal">
-        <div class="card-image-wrap">
-          <span class="card-ribbon">8 Sesiones</span>
-          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80" alt="Bye Celulitis" />
+        <div class="calc-group">
+          <label>Número de Asistentes: <span id="partyGuestsCount" class="badge-number">4 personas</span></label>
+          <input type="range" id="partyGuestsRange" min="2" max="15" value="4" step="1" />
         </div>
-        <div class="card-content">
-          <span class="card-category">Tonificación & Moldeo</span>
-          <h3 class="card-title">Bye</h3>
-          <div class="card-subtitle">Celulitis & Glúteos</div>
-          <p class="card-desc">Restaura la elasticidad y suavidad cutánea rompiendo septos fibrosos en glúteos, cadera y piernas.</p>
-          <ul class="card-specs">
-            <li><i class="fa-solid fa-check"></i> Ondas de choque acústicas</li>
-            <li><i class="fa-solid fa-check"></i> Vacuoterapia & Drenaje linfático</li>
-            <li><i class="fa-solid fa-check"></i> Efecto push-up reafirmante</li>
-          </ul>
-          <div class="card-footer">
-            <div class="price-block">
-              <span class="regular">$8,500</span>
-              <span class="current">$6,200</span>
-            </div>
-            <button class="btn-select-service" data-name="Bye Celulitis & Glúteos" data-price="$6,200">Reservar</button>
-          </div>
-        </div>
-      </article>
 
-      <article class="card-item" data-cat="laser">
-        <div class="card-image-wrap">
-          <span class="card-ribbon">10 Sesiones</span>
-          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80" alt="Depilación Full Body" />
+        <div class="calc-group">
+          <label>Complementos Opcionales</label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="addMimosas" value="350" checked />
+            Barra de Mimosas &amp; Champán (+$350 p/p)
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="addGourmet" value="450" checked />
+            Catering Gourmet &amp; Charcutería (+$450 p/p)
+          </label>
         </div>
-        <div class="card-content">
-          <span class="card-category">Soprano Titanium</span>
-          <h3 class="card-title">Full Body</h3>
-          <div class="card-subtitle">Libertad sin Límites</div>
-          <p class="card-desc">Depilación láser de última generación, totalmente indolora y efectiva en todo tipo de fototipos cutáneos.</p>
-          <ul class="card-specs">
-            <li><i class="fa-solid fa-check"></i> Piernas completas, Brazos, Axilas y Bikini</li>
-            <li><i class="fa-solid fa-check"></i> Espalda, Abdomen y Glúteos</li>
-            <li><i class="fa-solid fa-check"></i> Ahorro especial de $4,501</li>
-          </ul>
-          <div class="card-footer">
-            <div class="price-block">
-              <span class="regular">$19,500</span>
-              <span class="current">$14,999</span>
-            </div>
-            <button class="btn-select-service" data-name="Depilación Láser Full Body" data-price="$14,999">Reservar</button>
-          </div>
-        </div>
-      </article>
 
-      <article class="card-item" data-cat="especiales">
-        <div class="card-image-wrap">
-          <span class="card-ribbon">5 Sesiones</span>
-          <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80" alt="Micropuntura Brasileña" />
+        <div class="party-price-box">
+          <div class="total-label">Inversión Estimada:</div>
+          <div class="total-amount" id="partyEstimatedTotal">$13,200 MXN</div>
+          <div class="sub-label">*Facilidad de hasta 12 MSI disponible</div>
         </div>
-        <div class="card-content">
-          <span class="card-category">Regeneración Cutánea</span>
-          <h3 class="card-title">Bye</h3>
-          <div class="card-subtitle">Estrías Reales</div>
-          <p class="card-desc">Técnica avanzada de micropuntura brasileña que estimula la síntesis de elastina y colágeno sobre la estría.</p>
-          <ul class="card-specs">
-            <li><i class="fa-solid fa-check"></i> Suaviza la profundidad y textura</li>
-            <li><i class="fa-solid fa-check"></i> Trabajo de zona completa en 45 min</li>
-            <li><i class="fa-solid fa-check"></i> Valoración y seguimiento incluido</li>
-          </ul>
-          <div class="card-footer">
-            <div class="price-block">
-              <span class="regular">$7,500</span>
-              <span class="current">$4,250</span>
-            </div>
-            <button class="btn-select-service" data-name="Bye Estrías Brasileñas" data-price="$4,250">Reservar</button>
-          </div>
-        </div>
-      </article>
 
+        <button type="button" class="btn-party-reserve" id="btnBookParty">
+          <i class="fa-brands fa-whatsapp"></i> Reservar Fecha de Spa Party
+        </button>
+      </div>
     </div>
   </section>
 
-  <!-- DIRECTORIO DE SUCURSALES -->
+  <!-- CATÁLOGO DINÁMICO DE TRATAMIENTOS -->
+  <section class="section-wrap" id="catalogo">
+    <div class="center-heading">
+      <span class="label">Catálogo de Bienestar</span>
+      <h2>Protocolos &amp; Experiencias de Spa</h2>
+      <p>Tratamientos integrales formulados para brindar resultados progresivos mediante tecnología estética no invasiva.</p>
+    </div>
+
+    <div class="filter-pills" id="filterPillsContainer">
+      <button class="filter-btn active" data-category="todos">Todos</button>
+      <button class="filter-btn" data-category="corporal">Corporales &amp; Moldeo</button>
+      <button class="filter-btn" data-category="facial">Faciales &amp; Antiedad</button>
+      <button class="filter-btn" data-category="laser">Depilación Láser</button>
+      <button class="filter-btn" data-category="spa-party">Spa Party &amp; Grupos</button>
+    </div>
+
+    <!-- Contenedor inyectado dinámicamente -->
+    <div class="treatments-grid" id="servicesGrid"></div>
+  </section>
+
+  <!-- SUCURSALES (NUESTRAS CASAS) CON RESEÑAS -->
   <section class="locations-section" id="sucursales">
     <div class="center-heading">
       <span class="label">Nuestras Casas</span>
       <h2>Santuarios de Bienestar Urbano</h2>
-      <p>Espacios privados, cabinas climatizadas y amenidades de cortesía en las mejores zonas de la ciudad.</p>
+      <p>Espacios privados, cabinas dobles y suites exclusivas para Spa Parties en las mejores zonas de la ciudad.</p>
     </div>
 
     <div class="locations-grid">
@@ -326,9 +246,9 @@
         <h4 class="location-title"><i class="fa-solid fa-gem"></i> Sucursal Polanco</h4>
         <p><strong>Dirección:</strong> Av. Campos Elíseos 204, Piso 3, Col. Polanco V Sección.</p>
         <p><strong>Horario:</strong> Lunes a Sábado: 8:00 AM – 9:00 PM | Domingo: 10:00 AM – 6:00 PM</p>
-        <p><strong>Servicios:</strong> Cabinas VIP, Área de Relajación, Valet Parking.</p>
+        <p><strong>Especialidad:</strong> Suites Privadas para Spa Party &amp; Valet Parking.</p>
         <div class="location-actions">
-          <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fa-solid fa-location-arrow"></i> Ver en Maps</a>
+          <a href="https://maps.google.com/?q=Casa+Fenix+Polanco" target="_blank" class="btn-maps"><i class="fa-solid fa-location-arrow"></i> Ver en Maps</a>
         </div>
       </div>
 
@@ -336,9 +256,9 @@
         <h4 class="location-title"><i class="fa-solid fa-spa"></i> Sucursal Roma Norte</h4>
         <p><strong>Dirección:</strong> Calle Orizaba 101, Frente a Plaza Río de Janeiro.</p>
         <p><strong>Horario:</strong> Lunes a Sábado: 9:00 AM – 8:00 PM | Domingo: 10:00 AM – 5:00 PM</p>
-        <p><strong>Servicios:</strong> Cabinas Dobles para Parejas, Tea Bar Orgánico.</p>
+        <p><strong>Especialidad:</strong> Cabinas para Parejas, Tea Bar Botánico y Terraza Privada.</p>
         <div class="location-actions">
-          <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fa-solid fa-location-arrow"></i> Ver en Maps</a>
+          <a href="https://maps.google.com/?q=Casa+Fenix+Roma+Norte" target="_blank" class="btn-maps"><i class="fa-solid fa-location-arrow"></i> Ver en Maps</a>
         </div>
       </div>
 
@@ -346,9 +266,114 @@
         <h4 class="location-title"><i class="fa-solid fa-leaf"></i> Sucursal Santa Fe</h4>
         <p><strong>Dirección:</strong> Av. Vasco de Quiroga 3800, Torre B Corporativa.</p>
         <p><strong>Horario:</strong> Lunes a Viernes: 7:00 AM – 9:00 PM | Sábado: 9:00 AM – 6:00 PM</p>
-        <p><strong>Servicios:</strong> Express Wellness, Tratamientos Post-Work, Ducha Escocesa.</p>
+        <p><strong>Especialidad:</strong> Retiros Corporativos de Bienestar y Express Wellness.</p>
         <div class="location-actions">
-          <a href="https://maps.google.com" target="_blank" class="btn-maps"><i class="fa-solid fa-location-arrow"></i> Ver en Maps</a>
+          <a href="https://maps.google.com/?q=Casa+Fenix+Santa+Fe" target="_blank" class="btn-maps"><i class="fa-solid fa-location-arrow"></i> Ver en Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBMÓDULO DE RESEÑAS VERIFICADAS GOOGLE MAPS -->
+    <div class="reviews-wrapper" id="resenas">
+      <div class="reviews-header-block">
+        <div class="rating-overview">
+          <span class="rating-score">4.9</span>
+          <div class="rating-stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="rating-source"><i class="fa-brands fa-google"></i> Más de 380 reseñas en Google Maps</span>
+        </div>
+        
+        <div class="reviews-cta">
+          <a href="https://search.google.com/local/writereview?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4" target="_blank" class="btn-google-review">
+            <i class="fa-brands fa-google"></i> Dejar una Reseña en Maps
+          </a>
+        </div>
+      </div>
+
+      <div class="reviews-grid">
+        <!-- Reseña 1 -->
+        <div class="review-card">
+          <div class="review-top">
+            <div class="review-author">
+              <div class="review-avatar">VR</div>
+              <div>
+                <h6>Valeria Rodríguez</h6>
+                <span class="review-branch">Sucursal Polanco &bull; Hace 1 semana</span>
+              </div>
+            </div>
+            <div class="card-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+          <p class="review-text">
+            "Hicimos mi despedida de soltera en formato Spa Party y fue una experiencia insuperable. Las cabinas impecables, la champaña helada y los masajes nos dejaron completamente relajadas. La atención del staff es de 10 estrellas."
+          </p>
+          <span class="review-badge"><i class="fa-solid fa-circle-check"></i> Experiencia Verificada: Spa Party</span>
+        </div>
+
+        <!-- Reseña 2 -->
+        <div class="review-card">
+          <div class="review-top">
+            <div class="review-author">
+              <div class="review-avatar">MC</div>
+              <div>
+                <h6>Mariana Cantú</h6>
+                <span class="review-branch">Sucursal Roma Norte &bull; Hace 2 semanas</span>
+              </div>
+            </div>
+            <div class="card-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+          <p class="review-text">
+            "Llevo 5 sesiones del protocolo 'Transforma Todo tu Cuerpo' y los resultados en firmeza y disminución de celulitis son súper notorios. Me encantó que respetaran los 12 MSI y que las terapeutas sean tan profesionales."
+          </p>
+          <span class="review-badge"><i class="fa-solid fa-circle-check"></i> Experiencia Verificada: Protocolo Corporal</span>
+        </div>
+
+        <!-- Reseña 3 -->
+        <div class="review-card">
+          <div class="review-top">
+            <div class="review-author">
+              <div class="review-avatar">SG</div>
+              <div>
+                <h6>Sofía Garza</h6>
+                <span class="review-branch">Sucursal Santa Fe &bull; Hace 3 semanas</span>
+              </div>
+            </div>
+            <div class="card-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+            </div>
+          </div>
+          <p class="review-text">
+            "El Lifting Facial 360 me quitó el aspecto de cansancio en la mandíbula y cuello. Las instalaciones de Santa Fe están preciosas y huelen delicioso desde que entras. Muy recomendado el té orgánico de cortesía."
+          </p>
+          <span class="review-badge"><i class="fa-solid fa-circle-check"></i> Experiencia Verificada: Lifting Facial 360</span>
+        </div>
+
+        <!-- Reseña 4 -->
+        <div class="review-card">
+          <div class="review-top">
+            <div class="review-author">
+              <div class="review-avatar">DM</div>
+              <div>
+                <h6>Daniela Morales</h6>
+                <span class="review-branch">Sucursal Polanco &bull; Hace 1 mes</span>
+              </div>
+            </div>
+            <div class="card-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+          <p class="review-text">
+            "La depilación láser con Soprano Titanium es de verdad indolora. Tenía miedo por experiencias pasadas en otras clínicas, pero aquí no sentí nada y el vello en axila y bikini se redujo desde la primera sesión."
+          </p>
+          <span class="review-badge"><i class="fa-solid fa-circle-check"></i> Experiencia Verificada: Depilación Láser</span>
         </div>
       </div>
     </div>
@@ -363,21 +388,21 @@
 
     <div class="faq-item">
       <button class="faq-question">
-        ¿Cómo funciona la primera sesión de valoración?
+        ¿Cómo funciona una Spa Party en Casa Fénix?
         <i class="fa-solid fa-chevron-down"></i>
       </button>
       <div class="faq-answer">
-        <p>En tu cita diagnóstica, una especialista evalúa tu fisionomía, porcentaje de adiposidad o fototipo cutáneo. Con esto diseñamos un protocolo a la medida para garantizar que alcances tus metas sin riesgos.</p>
+        <p>Cerramos una suite o área privada para tu grupo. Cada invitada recibe batas de baño, pantuflas, cóctel de bienvenida o mimosas, y acceso secuencial a masajes y tratamientos faciales personalizados mientras disfrutan del catering y convivencia en un entorno aromatizado.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-question">
-        ¿Los tratamientos requieren tiempo de reposo o incapacidad?
+        ¿Los tratamientos requieren reposo médico?
         <i class="fa-solid fa-chevron-down"></i>
       </button>
       <div class="faq-answer">
-        <p>No. Todas nuestras tecnologías (Soprano Titanium, Radiofrecuencia multipolar, Cavitación y Vacuodermia) son completamente no invasivas, permitiéndote reincorporarte de inmediato a tu vida cotidiana.</p>
+        <p>Ninguno. Toda nuestra aparatología y protocolos son no invasivos y permiten retomar actividades sociales o cotidianas de forma inmediata.</p>
       </div>
     </div>
 
@@ -387,22 +412,12 @@
         <i class="fa-solid fa-chevron-down"></i>
       </button>
       <div class="faq-answer">
-        <p>Aceptamos todas las tarjetas bancarias y contamos con opciones de hasta 12 Meses Sin Intereses en la compra de paquetes y protocolos integrales durante todo el mes.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question">
-        ¿Con cuánta anticipación debo cancelar o reprogramar?
-        <i class="fa-solid fa-chevron-down"></i>
-      </button>
-      <div class="faq-answer">
-        <p>Agradecemos notificarnos con al menos 24 horas de antelación para reasignar la cabina y horario sin penalizaciones.</p>
+        <p>Aceptamos todas las tarjetas de crédito bancarias y contamos con hasta 12 Meses Sin Intereses en la compra de paquetes integrales y eventos privados.</p>
       </div>
     </div>
   </section>
 
-  <!-- MODAL DE CONFIRMACIÓN DE CITA -->
+  <!-- MODAL DE RESERVA CLIENTES -->
   <div class="modal-overlay" id="bookingModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -411,13 +426,13 @@
       </div>
       <div class="modal-body">
         <div class="booking-summary">
-          <p><strong>Tratamiento:</strong> <span id="modalServiceName"></span></p>
-          <p><strong>Inversión Especial:</strong> <span id="modalServicePrice" style="color: var(--burgundy); font-weight: 700;"></span></p>
+          <p><strong>Experiencia:</strong> <span id="modalServiceName"></span></p>
+          <p><strong>Inversión Estimada:</strong> <span id="modalServicePrice" style="color: var(--burgundy); font-weight: 700;"></span></p>
         </div>
         <form id="modalBookingForm">
           <div class="form-group">
-            <label>Nombre y Apellido</label>
-            <input type="text" required id="custName" placeholder="Tu nombre completo" />
+            <label>Nombre Completo</label>
+            <input type="text" required id="custName" placeholder="Tu nombre y apellido" />
           </div>
           <div class="form-group">
             <label>Teléfono Celular / WhatsApp</label>
@@ -432,19 +447,19 @@
             </select>
           </div>
           <button type="submit" class="btn-submit-booking">
-            Confirmar y Enviar a WhatsApp <i class="fa-brands fa-whatsapp"></i>
+            Confirmar y Contactar Especialista <i class="fa-brands fa-whatsapp"></i>
           </button>
         </form>
       </div>
     </div>
   </div>
 
-  <!-- FOOTER CORPORATIVO -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
         <h3>CASA FÉNIX</h3>
-        <p>Clínica de estética avanzada, spa urbano y nutrición integral. Donde vuelves a elegirte y cuidarte se convierte en el mayor acto de amor propio.</p>
+        <p>Clínica de estética médica, spa holístico y retiros privados de bienestar. Donde vuelves a elegirte y cuidarte es un acto de amor a tu historia.</p>
         <div class="footer-socials">
           <a href="#"><i class="fa-brands fa-instagram"></i></a>
           <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
@@ -453,12 +468,12 @@
       </div>
 
       <div class="footer-col">
-        <h5>Protocolos</h5>
+        <h5>Experiencias</h5>
         <ul>
+          <li><a href="#spa-party">Spa Party &amp; Grupos</a></li>
           <li><a href="#catalogo">Moldeo Corporal</a></li>
-          <li><a href="#catalogo">Lifting & Antiedad</a></li>
+          <li><a href="#catalogo">Lifting Facial 360</a></li>
           <li><a href="#catalogo">Depilación Médica Láser</a></li>
-          <li><a href="#catalogo">Bioestimulación Celular</a></li>
         </ul>
       </div>
 
@@ -473,28 +488,28 @@
       </div>
 
       <div class="footer-col">
-        <h5>Atención al Cliente</h5>
+        <h5>Atención &amp; Citas</h5>
         <ul>
           <li><a href="tel:+525500000000">(55) 4432-8900</a></li>
-          <li><a href="mailto:hola@casafenix.mx">hola@casafenix.mx</a></li>
-          <li><a href="#">Términos de Servicio</a></li>
+          <li><a href="mailto:eventos@casafenix.mx">eventos@casafenix.mx</a></li>
           <li><a href="#">Aviso de Privacidad</a></li>
+          <li><a href="dashboard.html"><i class="fa-solid fa-lock"></i> Acceso Staff</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
       <span>&copy; 2026 Casa Fénix México. Todos los derechos reservados.</span>
-      <span>Diseñado bajo los estándares de alta cosmética y aparatología estética.</span>
+      <span>Diseñado con tecnología interactiva y sincronización en vivo.</span>
     </div>
   </footer>
 
-  <!-- BOTÓN FLOTANTE DE WHATSAPP -->
-  <a href="https://wa.me/5215500000000?text=Hola,%20deseo%20información%20general%20sobre%20los%20tratamientos%20de%20Casa%20Fénix" class="whatsapp-bubble" target="_blank" title="Contactar por WhatsApp">
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/5215500000000?text=Hola,%20deseo%20más%20información%20sobre%20los%20tratamientos%20de%20Casa%20Fénix" class="whatsapp-bubble" target="_blank" title="Hablar con concierge">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
-  <!-- Script Externo -->
-  <script src="js/main.js"></script>
+  <!-- Script de la Página de Inicio -->
+  <script src="js/app.js"></script>
 </body>
 </html>
