@@ -19,7 +19,7 @@
   <!-- CINTILLA SUPERIOR EDITABLE EN TIEMPO REAL -->
   <div class="top-bar" id="announcementBar">
     <div id="announcementText">
-      <!-- Inyectado dinámicamente -->
+      <!-- Inyectado dinámicamente desde app.js / localStorage -->
     </div>
     <div class="top-links">
       <a href="#spa-party"><i class="fa-solid fa-champagne-glasses"></i> Spa Party & Eventos</a>
@@ -106,7 +106,7 @@
           <div class="form-group">
             <label>Tratamiento o Protocolo</label>
             <select required id="bookService">
-              <!-- Opciones sincronizadas en tiempo real desde el catálogo -->
+              <!-- Opciones sincronizadas en tiempo real desde app.js -->
             </select>
           </div>
 
@@ -169,7 +169,7 @@
         </div>
       </div>
 
-      <!-- Cotizador en Vivo de Spa Party -->
+      <!-- Cotizador de Spa Party -->
       <div class="party-calculator-card">
         <h3>Cotiza tu Spa Party</h3>
         <p>Personaliza tu celebración y recibe costo estimado al instante:</p>
@@ -177,9 +177,9 @@
         <div class="calc-group">
           <label>Plan Spa Party</label>
           <select id="partyPackage">
-            <option value="1800">Golden Glow (Masaje + Facial Express) - $1,800 p/p</option>
-            <option value="2500" selected>Fénix Imperial (Masaje + Facial + Aparatología) - $2,500 p/p</option>
-            <option value="3400">Bridal Sanctuary (Circuito Completo + Regalo Especial) - $3,400 p/p</option>
+            <option value="1800">Golden Glow &bull; Masaje + Facial Express ($1,800 p/p)</option>
+            <option value="2500" selected>Fénix Imperial &bull; Masaje + Facial + Aparatología ($2,500 p/p)</option>
+            <option value="3400">Bridal Sanctuary &bull; Circuito Completo + Obsequio VIP ($3,400 p/p)</option>
           </select>
         </div>
 
@@ -192,11 +192,11 @@
           <label>Complementos Opcionales</label>
           <label class="checkbox-label">
             <input type="checkbox" id="addMimosas" value="350" checked />
-            Barra de Mimosas &amp; Champán (+$350 p/p)
+            Barra de Mimosas & Champán (+$350 p/p)
           </label>
           <label class="checkbox-label">
             <input type="checkbox" id="addGourmet" value="450" checked />
-            Catering Gourmet &amp; Charcutería (+$450 p/p)
+            Catering Gourmet & Charcutería (+$450 p/p)
           </label>
         </div>
 
